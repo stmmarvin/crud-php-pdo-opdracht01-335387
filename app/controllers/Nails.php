@@ -15,14 +15,14 @@ class Nails extends BaseController
 
         $dataRows = "";
 
-        foreach ($nails as $afspraak) {
+        /**foreach ($nails as $afspraak) {
             $dataRows .= "<tr>
                             <td>{$afspraak->Name}</td>
                             <td>{$afspraak->CapitalCity}</td>
                             <td>{$afspraak->Continent}</td>
                             <td>" . number_format($afspraak->Population, 0, ",", ".") . "</td>            
                         </tr>";
-        }
+        }//*/
 
         $data = [
             'title' => 'Bling Bling Nail Studio Chantal',
