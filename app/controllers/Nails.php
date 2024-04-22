@@ -1,31 +1,31 @@
 <?php
 
-class nails extends BaseController
+class Nails extends BaseController
 {
-    private $nagelsModel;
+    private $AfspraakModel;
 
     public function __construct()
     {
-        $this->nagelsModel = $this->model('nagels');
+        $this->AfspraakModel = $this->model('Afspraak');
     }
 
     public function index()
     {
-        $nails = $this->nagelsModel->getNails();
+        $nails = $this->AfspraakModel->getNails();
 
         $dataRows = "";
 
-        foreach ($nails as $nagels) {
+        foreach ($nails as $afspraak) {
             $dataRows .= "<tr>
-                            <td>{$nagels->Name}</td>
-                            <td>{$nagels->CapitalCity}</td>
-                            <td>{$nagels->Continent}</td>
-                            <td>" . number_format($nagels->Population, 0, ",", ".") . "</td>            
+                            <td>{$afspraak->Name}</td>
+                            <td>{$afspraak->CapitalCity}</td>
+                            <td>{$afspraak->Continent}</td>
+                            <td>" . number_format($afspraak->Population, 0, ",", ".") . "</td>            
                         </tr>";
         }
 
         $data = [
-            'title' => 'Landen van de Wereld',
+            'title' => 'Bling Bling Nail Studio Chantal',
             'dataRows' => $dataRows
         ];
 
@@ -33,7 +33,7 @@ class nails extends BaseController
     }
 
     /**
-     * Creates a new nagels.
+     * Creates a new Afspraak.
      *
      * This method is responsible for rendering the create view and passing the necessary data to it.
      *
@@ -48,10 +48,10 @@ class nails extends BaseController
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             /**
-             * Roep de createnagels methode aan van het nagelsModel object waardoor
+             * Roep de createAfspraak methode aan van het AfspraakModel object waardoor
              * de gegevens in de database worden opgeslagen
              */
-            $result = $this->nagelsModel->createnagels($_POST);
+            $result = $this->AfspraakModel->createAfspraak($_POST);
 
             echo '<div class="alert alert-success" role="alert">
                     Uw gegevens zijn opgeslagen. U wordt doorgestuurd naar de index-pagina.
