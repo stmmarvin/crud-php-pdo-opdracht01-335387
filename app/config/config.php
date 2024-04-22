@@ -3,7 +3,7 @@
  * De database verbindinsgegevens
  */
 define('DB_HOST', 'localhost');
-define('DB_NAME',  'Nailstudio');
+define('DB_NAME',  'nailstudio');
 define('DB_USER',  'root');
 define('DB_PASS',  '');
 

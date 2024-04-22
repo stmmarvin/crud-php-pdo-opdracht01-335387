@@ -27,7 +27,7 @@ class Afspraak
                           ,Telefoonnummer
                           ,Emailadres
                           ,Afspraakdatum
-                          ,soortbehandeling
+                          ,Soort behandeling
                     FROM   Afspraak';
 
             /**
