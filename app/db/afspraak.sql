@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 22 apr 2024 om 14:17
+-- Gegenereerd op: 15 mei 2024 om 19:23
 -- Serverversie: 8.2.0
 -- PHP-versie: 8.2.13
 
@@ -30,11 +30,14 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `afspraak`;
 CREATE TABLE IF NOT EXISTS `afspraak` (
   `id` tinyint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `Basiskleur` int NOT NULL,
+  `Basiskleur1` int NOT NULL,
+  `Basiskleur2` int NOT NULL,
+  `Basiskleur3` int NOT NULL,
+  `Basiskleur4` int NOT NULL,
   `Telefoonnummer` smallint NOT NULL,
   `Emailadres` varchar(100) NOT NULL,
   `Afspraakdatum` datetime NOT NULL,
-  `Soort Behandeling` int NOT NULL,
+  `SoortBehandeling` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;

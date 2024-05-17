@@ -15,14 +15,14 @@ class Countries extends BaseController
 
         $dataRows = "";
 
-        /**foreach ($countries as $country) {
+        foreach ($countries as $country) {
             $dataRows .= "<tr>
                             <td>{$country->Name}</td>
                             <td>{$country->CapitalCity}</td>
                             <td>{$country->Continent}</td>
                             <td>" . number_format($country->Population, 0, ",", ".") . "</td>            
                         </tr>";
-        }//** */
+        }
 
         $data = [
             'title' => 'Landen van de Wereld',

@@ -23,11 +23,14 @@ class Afspraak
              * Maak een sql-query die de gewenste informatie opvraagt uit de database
              */
             $sql = 'SELECT Id
-                          ,Basiskleur
+                          ,Basiskleur1
+                          ,Basiskleur2
+                          ,Basiskleur3
+                          ,Basiskleur4
                           ,Telefoonnummer
                           ,Emailadres
                           ,Afspraakdatum
-                          ,Soort behandeling
+                          ,soortbehandeling
                     FROM   Afspraak';
 
             /**
@@ -51,12 +54,18 @@ class Afspraak
          * Maak een sql-query die de ingevulde gegevens van het formulier
          * wegschrijft naar de database
          */
-        $sql = 'INSERT INTO Afspraak (Basiskleur
+        $sql = 'INSERT INTO Afspraak (Basiskleur1
+                                    ,Basiskleur2
+                                    ,Basiskleur3
+                                    ,Basiskleur4
                                     ,Telefoonnummer
                                     ,Emailadres
                                     ,Afspraakdatum
                                     ,soortbehandeling)
-                     VALUES     (:basiskleur
+                     VALUES     (:basiskleur1
+                                ,:basiskleur2
+                                ,:basiskleur3  
+                                ,:basiskleur4
                                 ,:telefoonnummer
                                 ,:emailadres
                                 ,:afspraakdatum
@@ -70,16 +79,21 @@ class Afspraak
         /**
          * We koppelen de waardes uit het formulier aan de parameters in de query
          */
-        $this->db->bind(':basiskleur', $postArrayData['afspraak'], PDO::PARAM_STR);
-        $this->db->bind(':telefoonnummer', $postArrayData['telefoonnummer'], PDO::PARAM_STR);
-        $this->db->bind(':emailadres', $postArrayData['emailadres'], PDO::PARAM_STR);
-        $this->db->bind(':afspraakdatum', $postArrayData['afspraakdatum'], PDO::PARAM_INT);
-        $this->db->bind(':soortbehandeling', $postArrayData['soortbehandeling'], PDO::PARAM_STR);
+        $this->db->bind(':basiskleur1', $postArrayData['basiskleur1'][0], PDO::PARAM_STR);
+        $this->db->bind(':basiskleur2', $postArrayData['basiskleur2'][1], PDO::PARAM_STR);
+        $this->db->bind(':basiskleur3', $postArrayData['basiskleur3'][2], PDO::PARAM_STR);
+        $this->db->bind(':basiskleur4', $postArrayData['basiskleur4'][3], PDO::PARAM_STR);
+        $this->db->bind(':telefoonnummer', $postArrayData['phone_number'], PDO::PARAM_STR);
+        $this->db->bind(':emailadres', $postArrayData['email'], PDO::PARAM_STR);
+        $this->db->bind(':afspraakdatum', $postArrayData['appointment_datetime'], PDO::PARAM_INT);
+        $this->db->bind(':soortbehandeling', $postArrayData['behandeling'][0], PDO::PARAM_STR);
 
         /**
          * Voer de query uit zodat de gegevens worden weggeschreven naar de database
          */
         return $this->db->execute();
-    }
 
+        
+    
+ }
 }

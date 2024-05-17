@@ -2,27 +2,32 @@
 
 class Nails extends BaseController
 {
-    private $AfspraakModel;
+    private $afspraakModel;
 
     public function __construct()
     {
-        $this->AfspraakModel = $this->model('Afspraak');
+        $this->afspraakModel = $this->model('Afspraak');
     }
 
     public function index()
     {
-        $nails = $this->AfspraakModel->getNails();
-
+        $nails = $this->afspraakModel->getNails();
+        
         $dataRows = "";
 
-        /**foreach ($nails as $afspraak) {
+        foreach ($nails as $afspraak) {
             $dataRows .= "<tr>
-                            <td>{$afspraak->Name}</td>
-                            <td>{$afspraak->CapitalCity}</td>
-                            <td>{$afspraak->Continent}</td>
-                            <td>" . number_format($afspraak->Population, 0, ",", ".") . "</td>            
+                            <td>{$afspraak->Basiskleur1}</td>
+                            <td>{$afspraak->Basiskleur2}</td>
+                            <td>{$afspraak->Basiskleur3}</td>
+                            <td>{$afspraak->Basiskleur4}</td>
+                            <td>{$afspraak->Telefoonnummer}</td>
+                            <td>{$afspraak->Emailadres}</td>
+                            <td>{$afspraak->Afspraakdatum}</td>
+                            <td>{$afspraak->soortbehandeling}</td>
+                                       
                         </tr>";
-        }//*/
+        }
 
         $data = [
             'title' => 'Bling Bling Nail Studio Chantal',
@@ -48,10 +53,10 @@ class Nails extends BaseController
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             /**
-             * Roep de createAfspraak methode aan van het AfspraakModel object waardoor
+             * Roep de createAfspraak methode aan van het afspraakModel object waardoor
              * de gegevens in de database worden opgeslagen
              */
-            $result = $this->AfspraakModel->createAfspraak($_POST);
+            $result = $this->afspraakModel->createAfspraak($_POST);
 
             echo '<div class="alert alert-success" role="alert">
                     Uw gegevens zijn opgeslagen. U wordt doorgestuurd naar de index-pagina.
@@ -67,6 +72,6 @@ class Nails extends BaseController
             'title' => 'Maak een afspraak bij Bling Bling Nail Studio Chantal'
         ];
 
-        $this->view('nails/index', $data);
+        $this->view('nails/create', $data);
     }
 }
