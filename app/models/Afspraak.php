@@ -79,14 +79,20 @@ class Afspraak
         /**
          * We koppelen de waardes uit het formulier aan de parameters in de query
          */
-        $this->db->bind(':basiskleur1', $postArrayData['basiskleur1'][0], PDO::PARAM_STR);
-        $this->db->bind(':basiskleur2', $postArrayData['basiskleur2'][1], PDO::PARAM_STR);
-        $this->db->bind(':basiskleur3', $postArrayData['basiskleur3'][2], PDO::PARAM_STR);
-        $this->db->bind(':basiskleur4', $postArrayData['basiskleur4'][3], PDO::PARAM_STR);
+        $this->db->bind(':basiskleur1', $postArrayData['nail_colors'][0], PDO::PARAM_STR);
+        $this->db->bind(':basiskleur2', $postArrayData['nail_colors'][1], PDO::PARAM_STR);
+        $this->db->bind(':basiskleur3', $postArrayData['nail_colors'][2], PDO::PARAM_STR);
+        $this->db->bind(':basiskleur4', $postArrayData['nail_colors'][3], PDO::PARAM_STR);
         $this->db->bind(':telefoonnummer', $postArrayData['phone_number'], PDO::PARAM_STR);
         $this->db->bind(':emailadres', $postArrayData['email'], PDO::PARAM_STR);
         $this->db->bind(':afspraakdatum', $postArrayData['appointment_datetime'], PDO::PARAM_INT);
-        $this->db->bind(':soortbehandeling', $postArrayData['behandeling'][0], PDO::PARAM_STR);
+    
+        if (isset($postArrayData['behandeling'][0])) {
+            $this->db->bind(':soortbehandeling', $postArrayData['behandeling'][0], PDO::PARAM_STR);
+        } else {
+            $this->db->bind(':soortbehandeling', null, PDO::PARAM_NULL);
+        }
+
 
         /**
          * Voer de query uit zodat de gegevens worden weggeschreven naar de database

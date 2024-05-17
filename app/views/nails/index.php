@@ -1,6 +1,6 @@
 <?php require_once APPROOT . '/views/includes/header.php'; ?>
 <h3><?php echo $data['title']; ?></h3>
-<p><a href="<?URLROOT; ?>/Nails/create">Maak een nieuwe afspraak</a></p>
+<p><a href="<?=URLROOT; ?>/Nails/create">Maak een nieuwe afspraak</a></p>
 <table class="table table-dark table-hover">
 <thead>
     <th>Basiskleur 1</th>
@@ -16,7 +16,8 @@
     <?= $data['dataRows']; ?>
 </tbody>
 </table>
-<a href="<?URLROOT; ?>/homepages/index">homepages</a>
+
+<a href="<?= URLROOT; ?>/homepages/index">Homepages</a>
 <?php require_once APPROOT . '/views/includes/footer.php'; ?>
 
 
